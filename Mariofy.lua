@@ -3,12 +3,12 @@ local addonName, addon = ...
 local frame = CreateFrame("Frame")
 
 local function isMario()
-    local playerName = UnitName("player") -- Get the player's name
-    return string.find(string.lower(playerName), "mario") ~= nil or string.find(string.lower(playerName), "samu") ~= nil -- Check if 'Mario' is in the name    
+    local playerName = UnitName("player")
+    return string.find(string.lower(playerName), "mario") ~= nil or string.find(string.lower(playerName), "samu") ~= nil
 end
 
 local function playSound(name)
-    PlaySoundFile("Interface\\AddOns\\" .. addonName .. "\\sounds\\".. name .. ".wav", "Master") -- Play the sound
+    PlaySoundFile("Interface\\AddOns\\" .. addonName .. "\\sounds\\".. name .. ".wav", "Master") 
 end
 
 local function onKeyPress(self, key)
