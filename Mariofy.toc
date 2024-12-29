@@ -1,0 +1,11 @@
+## Interface: 11505
+## Title: Mariofy!
+## Notes: Makes your experience more Mario-like if your name contains 'Mario'.
+## Author: cd21
+## Version: 1.0.0
+## RequiredDeps:
+## X-Curse-Project-ID: 999999
+## SavedVariables:
+## SavedVariablesPerCharacter:
+
+Mariofy.lua
