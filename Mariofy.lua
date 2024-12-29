@@ -2,7 +2,7 @@ local addonName, addon = ...
 
 local frame = CreateFrame("Frame")
 
-local function isMario()    
+local function isMario()
     local playerName = UnitName("player") -- Get the player's name
     return string.find(string.lower(playerName), "mario") ~= nil or string.find(string.lower(playerName), "samu") ~= nil -- Check if 'Mario' is in the name    
 end
@@ -17,14 +17,9 @@ local function onKeyPress(self, key)
     end
 end
 
-local damageCooldown = 1
 local lastDamageTs = 0
-local lastMoneyAmount = GetMoney() -- Initialize with the current money amount
+local lastMoneyAmount = GetMoney()
 
-
--- plunk sound on kill
-
--- Event handler for the ADDON_LOADED event
 frame:SetScript("OnEvent", function(self, event, ...)
     if not isMario() then
         return
@@ -36,11 +31,11 @@ frame:SetScript("OnEvent", function(self, event, ...)
             playSound("congrats1")  
         end)
     elseif event == "PLAYER_MONEY" then
-        local currentMoney = GetMoney() -- Get the current amount of money
+        local currentMoney = GetMoney() 
         if currentMoney > lastMoneyAmount then
-            playSound("smb3_coin") -- Play the coin sound if money has increased
+            playSound("smb3_coin") 
         end
-        lastMoneyAmount = currentMoney -- Update the last known money amount
+        lastMoneyAmount = currentMoney 
     elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
         local unit, spellName, spellID = ...        
         local spellName = C_Spell.GetSpellName( spellID )        
@@ -58,13 +53,12 @@ frame:SetScript("OnEvent", function(self, event, ...)
         end    
     elseif event == "ADDON_LOADED" and ... == addonName then
         self:UnregisterEvent("ADDON_LOADED")
-        
+
         print("|cFFFF0000Marioify|r loaded")        
         C_Timer.After(1, function()
             playSound("start1")
         end)
-    
-        -- Hook into the OnKeyDown event to detect key presses
+
         local keyFrame = CreateFrame("Frame", nil, UIParent)
         keyFrame:SetPropagateKeyboardInput(true)
         keyFrame:SetScript("OnKeyDown", onKeyPress)
