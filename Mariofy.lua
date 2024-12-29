@@ -20,8 +20,10 @@ end
 local lastDamageTs = 0
 local lastMoneyAmount = GetMoney()
 
+
+
 frame:SetScript("OnEvent", function(self, event, ...)
-    if not isMario() then
+    if isMario() then
         return
     end
 
@@ -49,8 +51,12 @@ frame:SetScript("OnEvent", function(self, event, ...)
                 lastDamageTs = timestamp
                 local rando = math.random(1, 3)
                 playSound("hurt" .. rando)
+            
+            elseif destGUID == UnitGUID("target") then
+                playSound("damageTo_" .. UnitCreatureType("target") ) 
             end
-        end    
+        end
+
     elseif event == "ADDON_LOADED" and ... == addonName then
         self:UnregisterEvent("ADDON_LOADED")
 
@@ -66,6 +72,8 @@ frame:SetScript("OnEvent", function(self, event, ...)
     elseif event == "PLAYER_DEAD" then
         playSound("death")
     end
+
+
 end)
 
 hooksecurefunc("TakeTaxiNode", function()
@@ -81,3 +89,5 @@ frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_DEAD")
 frame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+
+
