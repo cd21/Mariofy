@@ -2,12 +2,7 @@ local addonName, addon = ...
 
 addon.frame = CreateFrame("Frame")
 
-local function isMario()
-    local playerName = UnitName("player")
-    return string.find(string.lower(playerName), "mario") ~= nil or string.find(string.lower(playerName), "samu") ~= nil
-end
-
-addon.isMario = isMario
+addon.lastMoneyAmount = GetMoney()
 
 addon.frame:SetScript("OnEvent", function(self, event, ...)
     if addon.isMario() then
@@ -33,6 +28,8 @@ addon.frame:SetScript("OnEvent", function(self, event, ...)
         end
     elseif event == "COMBAT_LOG_EVENT_UNFILTERED" then
         addon.handleCombatLogEvent()
+    elseif event == "UNIT_HEALTH" then
+        addon.handleHealthEvent()
     elseif event == "ADDON_LOADED" and ... == addonName then
         self:UnregisterEvent("ADDON_LOADED")
 
@@ -56,10 +53,8 @@ addon.frame:RegisterEvent("ADDON_LOADED")
 addon.frame:RegisterEvent("PLAYER_DEAD")
 addon.frame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 addon.frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+addon.frame:RegisterEvent("UNIT_HEALTH")                    
+addon.frame:RegisterEvent("UNIT_POWER")                     
+addon.frame:RegisterEvent("PLAYER_REGEN_DISABLED")   
 
-hooksecurefunc("TakeTaxiNode", function()
-    if addon.isMario() then
-        local rando = math.random(1, 5)
-        addon.playSound("flight" .. rando)
-    end
-end)
+
