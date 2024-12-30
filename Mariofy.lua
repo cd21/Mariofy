@@ -21,7 +21,6 @@ local lastDamageTs = 0
 local lastMoneyAmount = GetMoney()
 
 
-
 frame:SetScript("OnEvent", function(self, event, ...)
     if isMario() then
         return

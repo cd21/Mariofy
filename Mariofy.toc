@@ -12,4 +12,5 @@ Core.lua
 SoundManager.lua
 KeyPressHandler.lua
 CombatLogHandler.lua
+UnitHealthHandler.lua
 Utils.lua
