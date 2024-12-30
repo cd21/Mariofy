@@ -18,7 +18,7 @@ function addon.isMario()
     return string.find(string.lower(playerName), "mario") ~= nil or string.find(string.lower(playerName), "samu") ~= nil
 end
 
-function isMario()
-    local playerName = UnitName("player")
-    return string.find(string.lower(playerName), "mario") ~= nil or string.find(string.lower(playerName), "samu") ~= nil
+function addon.getDistanceToPosition(x, y)
+    local x1, y1 = UnitPosition("player")
+    return math.sqrt((x - x1)^2 + (y - y1)^2)
 end

@@ -9,8 +9,11 @@
 ## SavedVariablesPerCharacter:
 
 Core.lua
+HandleAddonMessage.lua
+HandleCombatLogEvent.lua
+HandleHealthEvent.lua
+HandleMoney.lua
+onKeyPress.lua
+SendAddonMessage.lua
 SoundManager.lua
-KeyPressHandler.lua
-CombatLogHandler.lua
-UnitHealthHandler.lua
 Utils.lua

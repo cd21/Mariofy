@@ -11,4 +11,3 @@ end
 function addon.onLowHealth()
     addon.playSound("lowHP")
 end
-
