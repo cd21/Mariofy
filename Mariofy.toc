@@ -8,4 +8,8 @@
 ## SavedVariables:
 ## SavedVariablesPerCharacter:
 
-Mariofy.lua
+Core.lua
+SoundManager.lua
+KeyPressHandler.lua
+CombatLogHandler.lua
+Utils.lua

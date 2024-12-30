@@ -23,7 +23,7 @@ local lastMoneyAmount = GetMoney()
 
 
 frame:SetScript("OnEvent", function(self, event, ...)
-    if not isMario() then
+    if isMario() then
         return
     end
 
