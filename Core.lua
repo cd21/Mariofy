@@ -5,7 +5,7 @@ addon.frame = CreateFrame("Frame")
 addon.lastMoneyAmount = GetMoney()
 
 addon.frame:SetScript("OnEvent", function(self, event, ...)
-    if addon.isMario() then
+    if not addon.isMario() then
         return
     end
 
